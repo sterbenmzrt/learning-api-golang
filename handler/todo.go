@@ -2,18 +2,19 @@ package handler
 
 import (
 	"encoding/json"
+	"learning-api-golang/model"
+	"learning-api-golang/storage"
+	"learning-api-golang/utils"
 	"net/http"
 	"strconv"
 	"strings"
-	"todo-api/model"
-	"todo-api/storage"
 )
 
 func HandleTodos(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
 		todos := storage.GetAllTodos()
-		json.NewEncoder(w).Encode(todos)
+		utils.WriteJSON(w, http.StatusOK, todos)
 
 	case http.MethodPost:
 		var todo model.Todo
@@ -23,8 +24,7 @@ func HandleTodos(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		created := storage.AddTodo(todo)
-		w.WriteHeader(http.StatusCreated)
-		json.NewEncoder(w).Encode(created)
+		utils.WriteJSON(w, http.StatusCreated, created)
 
 	default:
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
@@ -46,7 +46,7 @@ func HandleTodoByID(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, "Not found", http.StatusNotFound)
 			return
 		}
-		json.NewEncoder(w).Encode(todo)
+		utils.WriteJSON(w, http.StatusOK, todo)
 
 	case http.MethodPut:
 		var todo model.Todo

@@ -2,7 +2,7 @@ package storage
 
 import (
 	"errors"
-	"todo-api/model"
+	"learning-api-golang/model"
 )
 
 var todos []model.Todo
