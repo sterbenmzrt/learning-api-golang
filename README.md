@@ -1,7 +1,7 @@
 
-# 📝 To-Do List API - Documentation
+# learning-api-golang
 
-This is a simple RESTful backend API built with **Go (Golang)** for managing a list of to-do items. The API allows clients to create, read, update, and delete (CRUD) to-do tasks.
+A simple Todo List backend API built with Go. This project demonstrates basic RESTful API structure, clean code practices, and JSON response formatting using Go standard libraries.
 
 ---
 
@@ -151,7 +151,7 @@ Delete a to-do item by ID.
 ## 📦 Project Structure
 
 ```
-todo-api/
+learning-api-golang/
 │
 ├── main.go               # Entry point of the app
 ├── handler/              # HTTP request handlers
@@ -160,6 +160,8 @@ todo-api/
 │   └── todo.go
 ├── storage/              # In-memory data store logic
 │   └── memory.go
+├── utils/
+│   └── formatter.go      # Formatter Helper JSON
 ├── go.mod                # Go module file
 └── README.md             # API documentation (this file)
 ```
@@ -185,7 +187,7 @@ todo-api/
 1. Make sure you have Go installed (`go version`)
 2. Clone the repo or place the files in a folder:
 ```bash
-go mod init todo-api
+go mod init learning-api-golang
 go run main.go
 ```
 3. The server will start at: `http://localhost:8080`
